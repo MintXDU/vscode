@@ -7,6 +7,32 @@
   },
   "license": "MIT",
   "main": "./out/main",
+  "contributes": {
+    "commands": [
+      {
+        "command": "helloworld.helloWorld",
+        "title": "Hello World!"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "treeView",
+          "title": "checkmark",
+          "icon": "resources/checkmark-round.svg"
+        }
+      ]
+    },
+    "views": {
+      "treeView": [
+        {
+          "id": "treeView-item",
+          "name": "item",
+          "when": ""
+        }
+      ]
+    }
+  },
   "private": true,
   "scripts": {
     "test": "echo Please run any of the test scripts from the scripts folder.",

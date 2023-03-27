@@ -352,7 +352,8 @@ export class Menubar {
 		// Help
 		if (this.shouldDrawMenu('Help')) {
 			const helpMenu = new Menu();
-			const helpMenuItem = new MenuItem({ label: this.mnemonicLabel(nls.localize({ key: 'mHelp', comment: ['&& denotes a mnemonic'] }, "&&Help")), submenu: helpMenu, role: 'help' });
+			// const helpMenuItem = new MenuItem({ label: this.mnemonicLabel(nls.localize({ key: 'mHelp', comment: ['&& denotes a mnemonic'] }, "&&Help")), submenu: helpMenu, role: 'help' });
+			const helpMenuItem = new MenuItem({ label: '你好', submenu: helpMenu, role: 'help' });
 			this.setMenuById(helpMenu, 'Help');
 			menubar.append(helpMenuItem);
 		}

@@ -41,6 +41,7 @@ registerAction2(class ShowAllSymbolsAction extends Action2 {
 	}
 
 	override async run(accessor: ServicesAccessor): Promise<void> {
+		console.log("I have done.");
 		accessor.get(IQuickInputService).quickAccess.show(ShowAllSymbolsAction.ALL_SYMBOLS_PREFIX);
 	}
 });

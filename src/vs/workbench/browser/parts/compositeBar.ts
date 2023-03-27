@@ -197,6 +197,10 @@ export class CompositeBar extends Widget implements ICompositeBar {
 		return [...this.model.items];
 	}
 
+	/**
+	 * û�б����ù���
+	 * @param items
+	 */
 	setCompositeBarItems(items: ICompositeBarItem[]): void {
 		if (this.model.setItems(items)) {
 			this.updateCompositeSwitcher();
@@ -238,6 +242,7 @@ export class CompositeBar extends Widget implements ICompositeBar {
 			preventLoopNavigation: this.options.preventLoopNavigation,
 			triggerKeys: { keyDown: true }
 		}));
+		// console.log(this.compositeSwitcherBar)
 
 		// Contextmenu for composites
 		this._register(addDisposableListener(parent, EventType.CONTEXT_MENU, e => this.showContextMenu(e)));
@@ -519,6 +524,7 @@ export class CompositeBar extends Widget implements ICompositeBar {
 			return; // We have not been rendered yet so there is nothing to update.
 		}
 
+		// this.model �洢 compositeBar �е�Ԫ������
 		let compositesToShow = this.model.visibleItems.filter(item =>
 			item.pinned
 			|| (this.model.activeItem && this.model.activeItem.id === item.id) /* Show the active composite even if it is not pinned */
@@ -600,6 +606,11 @@ export class CompositeBar extends Widget implements ICompositeBar {
 
 		// Update the positions of the composites
 		compositesToShow.forEach((compositeId, newIndex) => {
+			// console.log(compositeId, newIndex)
+			// ɾ�� compositesBar �е�Ԫ��
+			if (compositeId == "workbench.view.scm" || compositeId == "workbench.view.debug" || compositeId == "workbench.view.extensions") {
+				return
+			}
 			const currentIndex = this.visibleComposites.indexOf(compositeId);
 			if (newIndex !== currentIndex) {
 				if (currentIndex !== -1) {
